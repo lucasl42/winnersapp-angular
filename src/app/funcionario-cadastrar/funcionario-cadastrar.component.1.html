@@ -1,0 +1,27 @@
+<div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="funcional">Funcional</label>
+            <input type="text" class="form-control" id="funcional" placeholder="" [(ngModel)] = "funcionario.funcional" ngDefaultControl required>
+          </div>
+      <div class="col-md-4 mb-3">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" placeholder="" [(ngModel)] = "funcionario.nome" ngDefaultControl required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label for="perfil">Perfil</label>
+        <input type="text" class="form-control" id="perfil" placeholder="" [(ngModel)]="funcionario.perfil" ngDefaultControl required>
+      </div>
+      <div class="col-md-4 mb-3">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="email" placeholder="" [(ngModel)]="funcionario.email" ngDefaultControl required>
+        </div>
+      <div class="col-md-3 mb-3">
+        <label for="validationTooltip04">Squad</label>
+        <select [(ngModel)]="funcionario.squad.id" class="form-control" >
+            <option *ngFor="let squad of squads" [value]="squad.id">
+              {{squad.nome}}
+            </option>
+        </select>
+      </div>
+    </div>
+    <button (click) = "salvar()" class="btn btn-primary" >Cadastrar</button>
