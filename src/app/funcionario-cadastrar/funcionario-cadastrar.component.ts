@@ -14,6 +14,7 @@ export class FuncionarioCadastrarComponent implements OnInit {
 
   public funcionario:Funcionario = new Funcionario();
   public squads:Squad[] = [];
+  public perfis:string[] = [];
 
   public titulo:String;
   
@@ -36,6 +37,9 @@ export class FuncionarioCadastrarComponent implements OnInit {
 
   ngOnInit() {
     this.buscarSquad();
+    this.buscarPerfis();
+    this.funcionario.squad = new Squad();
+
   }
 
   buscar(funcional:number) {
@@ -51,6 +55,14 @@ export class FuncionarioCadastrarComponent implements OnInit {
     this._squadService.listar().subscribe(
       data => {
         this.squads=data;
+      }
+    )
+  }
+
+  buscarPerfis(){
+    this._funcionarioService.getPerfis().subscribe(
+      data => {
+        this.perfis=data;
       }
     )
   }

@@ -15,10 +15,9 @@
   <div class="col-md-6 form-group">
     <label for="nome">Perfil</label>
     <select [(ngModel)]="funcionario.perfil" ngDefaultControl class="custom-select" required>
-      <option selected>Selecione o Perfil</option>
-      <option value="0">Funcionario</option>
-      <option value="1">Lider Tecnico</option>
-      <option value="2">Administrador</option>
+      <option *ngFor="let perfil of perfis" [value]="perfil">
+        {{perfil}}
+      </option>
     </select>
   </div>
   <div class="invisible" class="col-md-6 mb-3">
@@ -27,12 +26,12 @@
       required>
   </div>
   <div class="col-md-6 mb-3">
-    <label for="validationTooltip04">Squad</label>
-    <select [(ngModel)]="funcionario.squad_id" class="form-control">
+    <label for="squad">Squad</label>
+    <select id="squad" [(ngModel)]="funcionario.squad.id" class="form-control">
       <option *ngFor="let squad of squads" [value]="squad.id">
         {{squad.nome}}
       </option>
     </select>
   </div>
-  <button (click) = "salvar()" class="btn btn-primary" >Salvar</button>
+  <button (click)="salvar()" class="btn btn-primary">Salvar</button>
 </div>
