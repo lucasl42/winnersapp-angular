@@ -13,7 +13,6 @@ import { SquadService } from '../squad.service';
 export class FuncionarioCadastrarComponent implements OnInit {
 
   public funcionario:Funcionario = new Funcionario();
-
   public squads:Squad[] = [];
 
   public titulo:String;

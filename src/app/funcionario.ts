@@ -3,5 +3,6 @@ export class Funcionario {
     public nome: string;
     public email: string;
     public perfil: number;
-    public squad_id: number;
+    public id_squad: number;
+
 }

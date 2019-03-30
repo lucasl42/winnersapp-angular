@@ -16,7 +16,7 @@
         <td>{{funcionario.nome}}</td>
         <td>{{funcionario.email}}</td>
         <td>{{funcionario.perfil}}</td>
-        <td>{{(funcionario.squad == null?"":funcionario.squad.nome)}}</td>
+        <td>{{(funcionario.squad == undefined?"":funcionario.squad.nome)}}</td>
         <td><a class="btn btn-dark" href='/funcionario-cadastrar?funcional={{funcionario.funcional}}'>Editar</a>
           <button (click) = "deletar(funcionario.funcional)" type="button" class="btn btn-dark">Deletar</button></td>
       </tr>

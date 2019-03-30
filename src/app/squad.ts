@@ -1,5 +1,7 @@
+import { Funcionario } from './funcionario';
+
 export class Squad {
     public id: number;
     public nome: string;
-    public id_lider: number;
+    public id_lider: Funcionario;
 }

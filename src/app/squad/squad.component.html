@@ -1,3 +1,20 @@
-<p>
-  squad works!
-</p>
+<a href='squad-cadastrar' class="btn btn-dark btn-lg">Cadastrar</a>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Líder</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let squad of dataTable">
+      <th scope="row">{{funcionario.funcional}}</th>
+      <td>{{funcionario.nome}}</td>
+      <td>{{funcionario.email}}</td>
+      <td>{{funcionario.perfil}}</td>
+      <td>{{(funcionario.squad == null?"":funcionario.squad.nome)}}</td>
+      <td><a class="btn btn-dark" href='/funcionario-cadastrar?funcional={{funcionario.funcional}}'>Editar</a>
+        <button (click)="deletar(funcionario.funcional)" type="button" class="btn btn-dark">Deletar</button></td>
+    </tr>
+  </tbody>
+</table>
