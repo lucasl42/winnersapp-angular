@@ -12,23 +12,27 @@ import { SquadService } from '../squad.service';
 })
 export class FuncionarioCadastrarComponent implements OnInit {
 
-  public funcionario:Funcionario = new Funcionario(0,"","","",new Squad(0,"",null));
+  public funcionario:Funcionario = new Funcionario();
 
   public squads:Squad[] = [];
 
-  public funcional:number = 0;
-
+  public titulo:String;
+  
   constructor(
     private _funcionarioService:FuncionarioService,
     private activatedRoute: ActivatedRoute,
     private _squadService:SquadService
-  ) {
-    this.activatedRoute.queryParams.subscribe(params => {
-      if (params['funcional']) {
-        this.buscar(Number(params['funcional']));
-        this.funcional = Number(params['funcional']);
+  ){
+    this.activatedRoute.queryParams.subscribe(parametro=>{
+      if(parametro["funcional"] == undefined){
+        this.titulo = "Novo Cadastro";
       }
-  });
+      else{
+        this.titulo = "Editar Cadastro";
+        
+        this.buscar(Number(parametro["funcional"]))
+      }
+    });  
   }
 
   ngOnInit() {
@@ -53,8 +57,9 @@ export class FuncionarioCadastrarComponent implements OnInit {
   }
 
   salvar(){
-    if (this.funcional != 0) {
-      this._funcionarioService.alterar(this.funcionario).subscribe(
+
+    if (this.funcionario.funcional == undefined) {
+      this._funcionarioService.cadastrar(this.funcionario).subscribe(
         data => {
           console.log("resultado: "+data);
         },
@@ -63,7 +68,7 @@ export class FuncionarioCadastrarComponent implements OnInit {
         }
       );
     } else {
-      this._funcionarioService.cadastrar(this.funcionario).subscribe(
+      this._funcionarioService.alterar(this.funcionario).subscribe(
         data => {
           console.log("resultado: "+data);
         },
